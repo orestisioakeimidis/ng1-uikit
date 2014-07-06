@@ -1,22 +1,17 @@
 'use strict'
 
-capitalize = (string) ->
-    string.charAt(0).toUpperCase() + string.slice(1)
+angular_uikit = angular.module 'angular-uikit', []
 
-angular_uikit = angular.module('angular-uikit', [])
-
-angular_uikit.directive('ukAlert', ->
-    restrict: 'E',
-    replace: true,
-    scope:
-        title: '@',
-        message: '@',
-        color: '@'
-    ,
-    templateUrl: 'templates/ukalert.html',
+# uk-alert directive
+angular_uikit.directive 'ukAlert', ->
+    restrict: 'E'
+    replace: true
+    templateUrl: 'templates/ukalert.html'
     link: (scope, element, attrs) ->
-        scope.closeable = 'close' of attrs
-        element.attr('data-uk-alert', '') if scope.closeable
-        element.addClass('uk-alert-' + attrs.color) if 'color' of attrs and attrs.color != ''
+        element.append(attrs.title) if attrs.title
+        element.append(attrs.message) if attrs.message
+        if 'closeable' of attrs
+            scope.closeable = true
+            element.attr('data-uk-alert', '')
+        element.addClass('uk-alert-' + attrs.color) if attrs.color
         element.addClass('uk-alert-large') if 'large' of attrs
-)
