@@ -17,6 +17,6 @@ angular_uikit.directive('ukAlert', ->
     link: (scope, element, attrs) ->
         scope.closeable = 'close' of attrs
         element.attr('data-uk-alert', '') if scope.closeable
-        scope.colorize = 'color' of attrs and attrs.color != ''
-        scope.islarge = 'large' of attrs
+        element.addClass('uk-alert-' + attrs.color) if 'color' of attrs and attrs.color != ''
+        element.addClass('uk-alert-large') if 'large' of attrs
 )
