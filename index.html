@@ -16,19 +16,52 @@
         <div class="uk-container uk-container-center">
             <!-- Alert directive -->
             <uk-alert
-                title="<h2>Today's headline</h2>"
+                title="<h2>Alert</h2>"
                 message="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>"
                 closeable
                 color="success"
                 large>
             </uk-alert>
+
+            <!-- Panel directive -->
+            <div class="uk-grid uk-grid-width-1-2" data-uk-grid-margin>
+                <div>
+                    <uk-panel
+                        title="Panel"
+                        header
+                        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                        box="primary"
+                        teaser="<img src='images/placeholder_800x280.svg' width='800' height='280' alt=''>"
+                        icon="user">
+                    </uk-panel>
+                </div>
+                <div>
+                    <uk-panel
+                        badge='{"text":"Top"}'
+                        title="Panel"
+                        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                        box="secondary"
+                        space
+                        icon="home">
+                    </uk-panel>
+                    <uk-panel
+                        badge='{"type":"danger","text":"Hot"}'
+                        title="Panel"
+                        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+                        box
+                        divider
+                        icon="bookmark">
+                    </uk-panel>
+                </div>
+            </div>
         </div>
 
         <!-- Javascript -->
         <script src="js/jquery.min.js"></script>
         <script src="js/angular.min.js"></script>
+        <script src="js/angular-sanitize.min.js"></script>
         <script src="js/uikit.min.js"></script>
-        <script src="js/app.js"></script>
+        <script src="js/uikit-directives.js"></script>
     </body>
 
 </html>
