@@ -1,5 +1,15 @@
-<div class="uk-panel" ng-class="box != '' ? 'uk-panel-box-' + box : ''">
+<div class="uk-panel">
+
     <div class="uk-panel-teaser" ng-if="teaser" ng-bind-html="teaser"></div>
-    <div class="uk-panel-badge uk-badge" ng-if="badge" ng-class="badge_object.type ? 'uk-badge-' + badge_object.type : ''">{{badge_object.text}}</div>
-    <h3 class="uk-panel-title" ng-if="title"><i class="uk-icon-{{icon}}" ng-if="icon"></i> {{title}}</h3>
+
+    <uk-badge modifiers="{{badge.modifiers}}" inpanel ng-if="badge">{{badge.text}}</uk-badge>
+
+    <h3 class="uk-panel-title" ng-if="title">
+
+        <uk-icon type="{{icon.type}}" modifiers="{{icon.modifiers}}" ng-if="icon"></uk-icon> {{title}}
+
+    </h3>
+
+    <text-placeholder></text-placeholder>
+
 </div>

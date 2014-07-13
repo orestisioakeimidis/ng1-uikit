@@ -1,39 +1,59 @@
 'use strict'
 
-angular_uikit = angular.module 'angular-uikit', ['ngSanitize']
+apply_modifiers = (element, modifiers, directive) ->
+    if modifiers
+        for modifier in modifiers.split ","
+            element.addClass 'uk-' + directive + '-' + modifier
 
-# uk-alert directive
-angular_uikit.directive 'ukAlert', ->
-    restrict: 'E'
-    replace: true
-    templateUrl: 'templates/ukalert.html'
-    link: (scope, element, attrs) ->
-        element.append attrs.title if attrs.title
-        element.append attrs.message if attrs.message
-        if 'closeable' of attrs
-            scope.closeable = true
-            element.attr 'data-uk-alert', ''
-        element.addClass 'uk-alert-' + attrs.color if attrs.color
-        element.addClass 'uk-alert-large' if 'large' of attrs
+angular_uikit = angular.module 'angular-uikit', ['ngSanitize']
 
 # uk-panel directive
 angular_uikit.directive 'ukPanel', ->
     restrict: 'E'
     replace: true
+    transclude: true
     scope:
         title: '@'
-        badge: '@'
-        box: '@'
         teaser: '@'
-        icon: '@'
     templateUrl: 'templates/ukpanel.html'
+    link: (scope, element, attrs, ctrl, transclude) ->
+        element.find('text-placeholder').replaceWith transclude()
+        scope.badge = angular.fromJson attrs.badge
+        scope.icon = angular.fromJson attrs.icon
+        apply_modifiers element, attrs.modifiers, 'panel'
+
+#  uk-icon directive
+angular_uikit.directive 'ukIcon', ->
+    restrict: 'E'
+    replace: true
+    scope: {}
+    templateUrl: 'templates/ukicon.html'
     link: (scope, element, attrs) ->
-        scope.badge_object = angular.fromJson attrs.badge
-        object =
-            'header': 'uk-panel-header'
-            'box': 'uk-panel-box'
-            'space': 'uk-panel-space'
-            'divider': 'uk-panel-divider'
-        for attribute of object
-            element.addClass object[attribute] if attribute of attrs
-        element.append attrs.text if 'text' of attrs
+        element.addClass 'uk-icon-' + attrs.type
+        apply_modifiers element, attrs.modifiers, 'icon'
+
+# uk-badge directive
+angular_uikit.directive 'ukBadge', ->
+    restrict: 'E'
+    replace: true
+    transclude: true
+    scope: {}
+    templateUrl: 'templates/ukbadge.html'
+    link: (scope, element, attrs, ctrl, transclude) ->
+        element.find('text-placeholder').replaceWith transclude()
+        scope.inpanel = true if 'inpanel' of attrs
+        apply_modifiers element, attrs.modifiers, 'badge'
+
+# uk-alert directive
+angular_uikit.directive 'ukAlert', ->
+    restrict: 'E'
+    replace: true
+    transclude: true
+    scope: {}
+    templateUrl: 'templates/ukalert.html'
+    link: (scope, element, attrs, ctrl, transclude) ->
+        element.find('text-placeholder').replaceWith transclude()
+        if 'closeable' of attrs
+            scope.closeable = true
+            element.attr 'data-uk-alert', ''
+        apply_modifiers element, attrs.modifiers, 'alert'

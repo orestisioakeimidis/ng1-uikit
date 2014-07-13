@@ -13,53 +13,85 @@
     </head>
 
     <body>
+        <!-- Directives -->
         <div class="uk-container uk-container-center">
-            <!-- Alert directive -->
-            <uk-alert
-                title="<h2>Alert</h2>"
-                message="<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>"
-                closeable
-                color="success"
-                large>
-            </uk-alert>
+            <!-- Panel -->
+            <h2>Panel</h2>
 
-            <!-- Panel directive -->
             <div class="uk-grid uk-grid-width-1-2" data-uk-grid-margin>
                 <div>
                     <uk-panel
-                        title="Panel"
-                        header
-                        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-                        box="primary"
-                        teaser="<img src='images/placeholder_800x280.svg' width='800' height='280' alt=''>"
-                        icon="user">
+                        title="Title"
+                        modifiers="box,box-primary,header"
+                        teaser='<img src="images/placeholder_800x280.svg" width="800" height="280" alt="">'
+                        icon='{"type":"user"}'>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </uk-panel>
                 </div>
+
                 <div>
                     <uk-panel
-                        badge='{"text":"Top"}'
-                        title="Panel"
-                        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-                        box="secondary"
-                        space
-                        icon="home">
+                        title="Title"
+                        badge='{"text":"100","modifiers":"notification,success"}'
+                        modifiers="box,box-secondary,header,space"
+                        icon='{"type":"home"}'>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </uk-panel>
+
                     <uk-panel
-                        badge='{"type":"danger","text":"Hot"}'
-                        title="Panel"
-                        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-                        box
-                        divider
-                        icon="bookmark">
+                        title="Title"
+                        badge='{"text":"Hot","modifiers":"danger"}'
+                        modifiers="box,divider"
+                        icon='{"type":"bookmark"}'>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </uk-panel>
                 </div>
             </div>
+
+            <!-- Icon -->
+            <h2>Icon</h2>
+
+            <uk-icon type="cog"></uk-icon>
+
+            <uk-icon type="user" modifiers="medium"></uk-icon>
+
+            <uk-icon type="home" modifiers="small,spin"></uk-icon>
+
+            <!-- Badge -->
+            <h2>Badge</h2>
+
+            <uk-badge>Info</uk-badge>
+
+            <uk-badge modifiers="notification">100</uk-badge>
+
+            <uk-badge modifiers="notification,success">10</uk-badge>
+
+            <uk-badge modifiers="success">Success</uk-badge>
+
+            <uk-badge modifiers="warning">Warning</uk-badge>
+
+            <uk-badge modifiers="danger">Danger</uk-badge>
+
+            <!-- Alert -->
+            <h2>Alert</h2>
+
+            <uk-alert>
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </uk-alert>
+
+            <uk-alert
+                closeable
+                modifiers="success,large">
+                <h2>Title</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </uk-alert>
         </div>
 
         <!-- Javascript -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/angular.min.js"></script>
-        <script src="js/angular-sanitize.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-sanitize.min.js"></script>
         <script src="js/uikit.min.js"></script>
         <script src="js/uikit-directives.js"></script>
     </body>
