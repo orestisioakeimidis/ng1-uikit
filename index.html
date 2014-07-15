@@ -25,7 +25,7 @@
             <div class="uk-grid uk-grid-width-1-2" data-uk-grid-margin>
                 <div>
                     <uk-panel
-                        title="Title"
+                        panel-title="Title"
                         modifiers="box,box-primary,header"
                         teaser='<img src="images/placeholder_800x280.svg" width="800" height="280" alt="">'
                         icon='{"type":"user"}'>
@@ -35,7 +35,7 @@
 
                 <div>
                     <uk-panel
-                        title="Title"
+                        panel-title="Title"
                         badge='{"text":"100","modifiers":"notification,success"}'
                         modifiers="box,box-secondary,header,space"
                         icon='{"type":"home"}'>
@@ -43,7 +43,7 @@
                     </uk-panel>
 
                     <uk-panel
-                        title="Title"
+                        panel-title="Title"
                         badge='{"text":"Hot","modifiers":"danger"}'
                         modifiers="box,divider"
                         icon='{"type":"bookmark"}'>
@@ -56,13 +56,48 @@
             <h2>Article</h2>
 
             <uk-article
-                title="Article title"
+                article-title="Article title"
                 meta="Written by Super User on 12 April 2012. Posted in Blog"
                 lead="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <uk-divider></uk-divider>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </uk-article>
+
+            <!-- Button -->
+            <h2>Button</h2>
+
+            <uk-button
+                text="Link">
+            </uk-button>
+
+            <uk-button
+                type="button"
+                text="Button">
+            </uk-button>
+
+            <uk-button
+                type="button"
+                text="Disabled"
+                disabled>
+            </uk-button>
+
+            <uk-button
+                type="button"
+                text="Success"
+                modifiers="success,large">
+            </uk-button>
+
+            <uk-button
+                type="button"
+                text="Primary"
+                modifiers="primary,mini">
+            </uk-button>
+
+            <uk-button
+                text="Link"
+                modifiers="link">
+            </uk-button>
 
             <!-- Icon -->
             <h2>Icon</h2>
@@ -71,7 +106,7 @@
 
             <uk-icon type="user" modifiers="medium"></uk-icon>
 
-            <uk-icon type="home" modifiers="small,spin"></uk-icon>
+            <uk-icon type="refresh" modifiers="small,spin"></uk-icon>
 
             <uk-icon type="github" modifiers="button"></uk-icon>
 

@@ -6,10 +6,15 @@ apply_modifiers = (element, modifiers, directive) ->
         for modifier in modifiers.split ","
             element.addClass 'uk-' + directive + '-' + modifier
 
+# Helper function to create element based on an attribute else fallback / default element
+create_element = (mapper, attribute, fallback) ->
+    if mapper[attribute] then angular.element mapper[attribute] else angular.element fallback
+
 # Helper function to insert transcluded text into placeholder element
 replace_transclude = (element, transclude) ->
     element.find('text-placeholder').replaceWith transclude()
 
+# Initialize angular-uikit module
 angular_uikit = angular.module 'angular-uikit', ['ngSanitize']
 
 # uk-panel directive
@@ -18,11 +23,11 @@ angular_uikit.directive 'ukPanel', ->
     replace: true
     transclude: true
     scope:
-        title: '@'
+        panelTitle: '@'
         teaser: '@'
     templateUrl: 'templates/ukpanel.html'
-    link: ($scope, $element, $attributes, controller, transclude) ->
-        replace_transclude $element, transclude
+    link: ($scope, $element, $attributes, $controller, $transclude) ->
+        replace_transclude $element, $transclude
         $scope.badge = angular.fromJson $attributes.badge
         $scope.icon = angular.fromJson $attributes.icon
         apply_modifiers $element, $attributes.modifiers, 'panel'
@@ -33,18 +38,34 @@ angular_uikit.directive 'ukArticle', ->
     replace: true
     transclude: true
     scope:
-        title: '@'
+        articleTitle: '@'
         meta: '@'
         lead: '@'
     templateUrl: 'templates/ukarticle.html'
-    link: ($scope, $element, $attributes, controller, transclude) ->
-        replace_transclude $element, transclude
+    link: ($scope, $element, $attributes, $controller, $transclude) ->
+        replace_transclude $element, $transclude
 
 # uk-divider directive
 angular_uikit.directive 'ukDivider', ->
     restrict: 'E'
     replace: true
     templateUrl: 'templates/ukdivider.html'
+
+# uk-button directive
+angular_uikit.directive 'ukButton', ->
+    restrict: 'E'
+    replace: true
+    scope: {}
+    templateUrl: 'templates/ukbutton.html'
+    link: ($scope, $element, $attributes) ->
+        mapper =
+            'button': '<button type="button" />'
+        temp_element = create_element mapper, $attributes.type, '<a />'
+        temp_element.addClass 'uk-button'
+        temp_element.text $attributes.text if $attributes.text
+        temp_element.attr 'disabled', '' if 'disabled' of $attributes
+        apply_modifiers temp_element, $attributes.modifiers, 'button'
+        $element.replaceWith temp_element
 
 # uk-icon directive
 angular_uikit.directive 'ukIcon', ->
@@ -53,10 +74,12 @@ angular_uikit.directive 'ukIcon', ->
     scope: {}
     templateUrl: 'templates/ukicon.html'
     link: ($scope, $element, $attributes) ->
-        # TODO
-        # Change element tag from "<i/>" to "<a/>" when modifier button is present
-        $element.addClass 'uk-icon-' + $attributes.type
-        apply_modifiers $element, $attributes.modifiers, 'icon'
+        mapper =
+            'button': '<a />'
+        temp_element = create_element mapper, $attributes.modifiers, '<i />'
+        temp_element.addClass 'uk-icon-' + $attributes.type
+        apply_modifiers temp_element, $attributes.modifiers, 'icon'
+        $element.replaceWith temp_element
 
 # uk-close directive
 angular_uikit.directive 'ukClose', ->
@@ -76,8 +99,8 @@ angular_uikit.directive 'ukBadge', ->
     transclude: true
     scope: {}
     templateUrl: 'templates/ukbadge.html'
-    link: ($scope, $element, $attributes, controller, transclude) ->
-        replace_transclude $element, transclude
+    link: ($scope, $element, $attributes, $controller, $transclude) ->
+        replace_transclude $element, $transclude
         $scope.inpanel = true if 'inpanel' of $attributes
         apply_modifiers $element, $attributes.modifiers, 'badge'
 
@@ -88,8 +111,8 @@ angular_uikit.directive 'ukAlert', ->
     transclude: true
     scope: {}
     templateUrl: 'templates/ukalert.html'
-    link: ($scope, $element, $attributes, controller, transclude) ->
-        replace_transclude $element, transclude
+    link: ($scope, $element, $attributes, $controller, $transclude) ->
+        replace_transclude $element, $transclude
         if 'close' of $attributes
             $scope.close = if $attributes.close == '' then true else $attributes.close
             $element.attr 'data-uk-alert', ''
