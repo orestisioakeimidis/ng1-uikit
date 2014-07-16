@@ -17,11 +17,7 @@
   };
 
   create_element = function(mapper, attribute, fallback) {
-    if (mapper[attribute]) {
-      return angular.element(mapper[attribute]);
-    } else {
-      return angular.element(fallback);
-    }
+    return angular.element(mapper[attribute] ? mapper[attribute] : fallback);
   };
 
   replace_transclude = function(element, transclude) {
@@ -61,7 +57,8 @@
       },
       templateUrl: 'templates/ukarticle.html',
       link: function($scope, $element, $attributes, $controller, $transclude) {
-        return replace_transclude($element, $transclude);
+        replace_transclude($element, $transclude);
+        return $scope.readmore = angular.fromJson($attributes.readmore);
       }
     };
   });
@@ -74,18 +71,54 @@
     };
   });
 
+  angular_uikit.directive('ukComment', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      transclude: true,
+      scope: {
+        commentTitle: '@',
+        meta: '@'
+      },
+      templateUrl: 'templates/ukcomment.html',
+      link: function($scope, $element, $attributes) {
+        $scope.avatar = angular.fromJson($attributes.avatar);
+        return apply_modifiers($element, $attributes.modifiers, 'comment');
+      }
+    };
+  });
+
+  angular_uikit.directive('ukCommentList', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      transclude: true,
+      templateUrl: 'templates/ukcommentlist.html',
+      link: function($scope, $element, $attributes) {
+        var comment, _i, _len, _ref, _results;
+        _ref = $element.children();
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          comment = _ref[_i];
+          _results.push(angular.element(comment).wrap('<li />'));
+        }
+        return _results;
+      }
+    };
+  });
+
   angular_uikit.directive('ukButton', function() {
     return {
       restrict: 'E',
       replace: true,
-      scope: {},
       templateUrl: 'templates/ukbutton.html',
       link: function($scope, $element, $attributes) {
-        var mapper, temp_element;
+        var href, mapper, temp_element;
         mapper = {
           'button': '<button type="button" />'
         };
-        temp_element = create_element(mapper, $attributes.type, '<a />');
+        href = $attributes.href ? $attributes.href : '';
+        temp_element = create_element(mapper, $attributes.type, '<a href="' + href + '" />');
         temp_element.addClass('uk-button');
         if ($attributes.text) {
           temp_element.text($attributes.text);
@@ -93,9 +126,21 @@
         if ('disabled' in $attributes) {
           temp_element.attr('disabled', '');
         }
+        if ('fullwidth' in $attributes) {
+          temp_element.addClass('uk-width-1-1', '');
+        }
         apply_modifiers(temp_element, $attributes.modifiers, 'button');
         return $element.replaceWith(temp_element);
       }
+    };
+  });
+
+  angular_uikit.directive('ukButtonGroup', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      transclude: true,
+      templateUrl: 'templates/ukbuttongroup.html'
     };
   });
 
@@ -103,12 +148,12 @@
     return {
       restrict: 'E',
       replace: true,
-      scope: {},
       templateUrl: 'templates/ukicon.html',
       link: function($scope, $element, $attributes) {
-        var mapper, temp_element;
+        var href, mapper, temp_element;
+        href = $attributes.href ? $attributes.href : '';
         mapper = {
-          'button': '<a />'
+          'button': '<a href="' + href + '" />'
         };
         temp_element = create_element(mapper, $attributes.modifiers, '<i />');
         temp_element.addClass('uk-icon-' + $attributes.type);
@@ -122,7 +167,6 @@
     return {
       restrict: 'E',
       replace: true,
-      scope: {},
       templateUrl: 'templates/ukclose.html',
       link: function($scope, $element, $attributes) {
         if ('inalert' in $attributes) {
@@ -141,10 +185,8 @@
       restrict: 'E',
       replace: true,
       transclude: true,
-      scope: {},
       templateUrl: 'templates/ukbadge.html',
-      link: function($scope, $element, $attributes, $controller, $transclude) {
-        replace_transclude($element, $transclude);
+      link: function($scope, $element, $attributes) {
         if ('inpanel' in $attributes) {
           $scope.inpanel = true;
         }

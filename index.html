@@ -10,20 +10,24 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="css/uikit.min.css"/>
+        <link rel="stylesheet" href="css/uikit.gradient.min.css"/>
     </head>
 
     <body>
         <!-- Directives -->
         <div class="uk-container uk-container-center">
+
             <h1>angular-uikit</h1>
 
-            <p>Angular directives for UIkit front-end framework. Easily integrate all UIkit Components into your AngularJS project.</p>
+            <p><a href="https://angularjs.org/" target="_blank">Angular</a> directives for <a href="http://www.getuikit.com" target="_blank">UIkit front-end framework</a>. Easily integrate all UIkit Components into your AngularJS project.</p>
 
             <!-- Panel -->
             <h2>Panel</h2>
 
             <div class="uk-grid uk-grid-width-1-2" data-uk-grid-margin>
+
                 <div>
+
                     <uk-panel
                         panel-title="Title"
                         modifiers="box,box-primary,header"
@@ -31,9 +35,11 @@
                         icon='{"type":"user"}'>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </uk-panel>
+
                 </div>
 
                 <div>
+
                     <uk-panel
                         panel-title="Title"
                         badge='{"text":"100","modifiers":"notification,success"}'
@@ -49,7 +55,9 @@
                         icon='{"type":"bookmark"}'>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </uk-panel>
+
                 </div>
+
             </div>
 
             <!-- Article -->
@@ -58,46 +66,82 @@
             <uk-article
                 article-title="Article title"
                 meta="Written by Super User on 12 April 2012. Posted in Blog"
-                lead="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+                lead="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                readmore='{"href":"#","text":"Read more"}'>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 <uk-divider></uk-divider>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </uk-article>
 
+            <!-- Comment -->
+            <h2>Comment</h2>
+
+            <uk-comment
+                comment-title="Author"
+                meta="12 days ago"
+                avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
+                modifiers="primary">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </uk-comment>
+
+            <!-- Comment list -->
+            <uk-comment-list>
+
+                <uk-comment
+                    comment-title="Author"
+                    meta="12 days ago"
+                    avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
+                    modifiers="primary">
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                </uk-comment>
+
+                <uk-comment
+                    comment-title="Author"
+                    meta="12 days ago"
+                    avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                </uk-comment>
+
+            </uk-comment-list>
+
             <!-- Button -->
             <h2>Button</h2>
 
-            <uk-button
-                text="Link">
-            </uk-button>
+            <uk-button text="Link"></uk-button>
 
-            <uk-button
-                type="button"
-                text="Button">
-            </uk-button>
+            <uk-button text="Button" type="button"></uk-button>
 
-            <uk-button
-                type="button"
-                text="Disabled"
-                disabled>
-            </uk-button>
+            <uk-button text="Disabled" type="button" disabled></uk-button>
 
-            <uk-button
-                type="button"
-                text="Success"
-                modifiers="success,large">
-            </uk-button>
+            <uk-button text="Success" type="button" modifiers="success,large"></uk-button>
 
-            <uk-button
-                type="button"
-                text="Primary"
-                modifiers="primary,mini">
-            </uk-button>
+            <uk-button text="Primary" type="button" modifiers="primary,mini"></uk-button>
 
-            <uk-button
-                text="Link"
-                modifiers="link">
-            </uk-button>
+            <uk-button text="Link" modifiers="link"></uk-button>
+
+            <div class="uk-grid uk-grid-width-1-2 uk-margin-top">
+
+                <div>
+
+                    <uk-button text="Full width button" fullwidth></uk-button>
+
+                </div>
+
+            </div>
+
+            <div class="uk-margin-top">
+
+                <uk-button-group>
+
+                    <uk-button text="Link" modifiers="primary"></uk-button>
+
+                    <uk-button text="Button" type="button" modifiers="primary"></uk-button>
+
+                    <uk-button text="Button" type="button" modifiers="primary"></uk-button>
+
+                </uk-button-group>
+
+            </div>
 
             <!-- Icon -->
             <h2>Icon</h2>
@@ -108,7 +152,7 @@
 
             <uk-icon type="refresh" modifiers="small,spin"></uk-icon>
 
-            <uk-icon type="github" modifiers="button"></uk-icon>
+            <uk-icon type="github" href="https://github.com/orestisioakeimidis/angular-uikit" modifiers="button"></uk-icon>
 
             <!-- Close -->
             <h2>Close</h2>
@@ -140,12 +184,11 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </uk-alert>
 
-            <uk-alert
-                close
-                modifiers="success,large">
+            <uk-alert close modifiers="success,large">
                 <h2>Title</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             </uk-alert>
+
         </div>
 
         <!-- Javascript -->
