@@ -1,15 +1,9 @@
 <div class="uk-panel">
-
-    <div class="uk-panel-teaser" ng-if="teaser" ng-bind-html="teaser"></div>
-
-    <uk-badge modifiers="{{badge.modifiers}}" inpanel ng-if="badge">{{badge.text}}</uk-badge>
-
-    <h3 class="uk-panel-title" ng-if="panelTitle">
-
-        <uk-icon type="{{icon.type}}" modifiers="{{icon.modifiers}}" ng-if="icon"></uk-icon> {{panelTitle}}
-
-    </h3>
-
-    <text-placeholder></text-placeholder>
-
+  <div class="uk-panel-teaser" ng-if="teaser" ng-bind-html="teaser"></div>
+  <uk-badge modifiers="{{badge.modifiers}}" inpanel ng-if="badge">{{badge.text}}</uk-badge>
+  <h3 class="uk-panel-title" ng-if="panelTitle">
+    <uk-icon type="{{icon.type}}" modifiers="{{icon.modifiers}}" ng-if="icon"></uk-icon>
+    {{panelTitle}}
+  </h3>
+  <ng-transclude></ng-transclude>
 </div>

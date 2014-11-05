@@ -1,13 +1,7 @@
 <article class="uk-article">
-
-    <h1 class="uk-article-title" ng-if="articleTitle">{{articleTitle}}</h1>
-
-    <p class="uk-article-meta" ng-if="meta">{{meta}}</p>
-
-    <p class="uk-article-lead" ng-if="lead">{{lead}}</p>
-
-    <text-placeholder></text-placeholder>
-
-    <a ng-href="{{readmore.href}}" ng-if="readmore.href">{{readmore.text}}</a>
-
+  <h1 class="uk-article-title" ng-if="articleTitle">{{articleTitle}}</h1>
+  <p class="uk-article-meta" ng-if="meta">{{meta}}</p>
+  <p class="uk-article-lead" ng-if="lead">{{lead}}</p>
+  <ng-transclude></ng-transclude>
+  <a ng-href="{{readmore.href}}" ng-if="readmore.href">{{readmore.text}}</a>
 </article>
