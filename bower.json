@@ -1,0 +1,11 @@
+{
+  "name": "angular-uikit",
+  "description": "Angular directives for UIkit front-end framework. Easily integrate all UIkit Components into your AngularJS project.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.3.2",
+    "angular-sanitize": "~1.3.2",
+    "uikit": "~2.12.0"
+  }
+}
