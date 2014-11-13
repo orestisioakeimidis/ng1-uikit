@@ -1,7 +1,7 @@
 <article class="uk-article">
-  <h1 class="uk-article-title" ng-if="articleTitle">{{articleTitle}}</h1>
-  <p class="uk-article-meta" ng-if="meta">{{meta}}</p>
-  <p class="uk-article-lead" ng-if="lead">{{lead}}</p>
+  <h1 ng-if="articleTitle" class="uk-article-title">{{articleTitle}}</h1>
+  <p ng-if="meta" class="uk-article-meta">{{meta}}</p>
+  <p ng-if="lead" class="uk-article-lead">{{lead}}</p>
   <ng-transclude></ng-transclude>
-  <a ng-href="{{readmore.href}}" ng-if="readmore.href">{{readmore.text}}</a>
+  <a ng-if="readmore.href" ng-href="{{readmore.href}}">{{readmore.text}}</a>
 </article>

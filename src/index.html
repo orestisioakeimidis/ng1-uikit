@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="Angular directives for UIkit front-end framework. Easily integrate all UIkit Components into your AngularJS project." />
-  <title>Angular directives for UIkit</title>
+  <title>AngularJS and UIkit</title>
   <!-- bower:css -->
   <!-- endinject -->
   <!-- inject:css -->
@@ -15,9 +15,44 @@
 <body ng-cloak>
   <!-- Directives -->
   <div class="uk-container uk-container-center" data-uk-observe>
-    <h1>Angular directives for UIkit (angular-uikit)</h1>
+    <h1 class="uk-margin-top">AngularJS and UIkit</h1>
 
-    <p><a href="https://angularjs.org/" target="_blank">Angular</a> directives for <a href="http://www.getuikit.com" target="_blank">UIkit frontend framework</a>. Easily integrate all UIkit Components into your AngularJS project.</p>
+    <p><a href="https://angularjs.org/" target="_blank">AngularJS</a> directives for <a href="http://www.getuikit.com" target="_blank">UIkit</a> frontend framework. Easily integrate all UIkit Components into your AngularJS project.</p>
+
+    <!-- Layout Components -->
+
+    <!-- Panel -->
+    <h2>Panel</h2>
+
+    <div class="uk-grid uk-grid-width-1-2" data-uk-grid-margin>
+      <div>
+        <uk-panel
+          panel-title="Title"
+          teaser='<img src="images/placeholder_800x280.svg" width="800" height="280" alt="">'
+          modifiers="box,box-primary,header"
+          icon='{"type":"user"}'>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </uk-panel>
+      </div>
+
+      <div>
+        <uk-panel
+          panel-title="Title"
+          modifiers="box,box-secondary,header,space"
+          badge='{"text":"100","modifiers":"notification,success"}'
+          icon='{"type":"home"}'>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </uk-panel>
+
+        <uk-panel
+          panel-title="Title"
+          modifiers="box,divider"
+          badge='{"text":"Hot","modifiers":"danger"}'
+          icon='{"type":"bookmark"}'>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        </uk-panel>
+      </div>
+    </div>
 
     <!-- Article -->
     <h2>Article</h2>
@@ -31,39 +66,6 @@
       <uk-divider></uk-divider>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </uk-article>
-
-    <!-- Panel -->
-    <h2>Panel</h2>
-
-    <div class="uk-grid uk-grid-width-1-2" data-uk-grid-margin>
-      <div>
-        <uk-panel
-          panel-title="Title"
-          modifiers="box,box-primary,header"
-          teaser='<img src="images/placeholder_800x280.svg" width="800" height="280" alt="">'
-          icon='{"type":"user"}'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </uk-panel>
-      </div>
-
-      <div>
-        <uk-panel
-          panel-title="Title"
-          badge='{"text":"100","modifiers":"notification,success"}'
-          modifiers="box,box-secondary,header,space"
-          icon='{"type":"home"}'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </uk-panel>
-
-        <uk-panel
-          panel-title="Title"
-          badge='{"text":"Hot","modifiers":"danger"}'
-          modifiers="box,divider"
-          icon='{"type":"bookmark"}'>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        </uk-panel>
-      </div>
-    </div>
 
     <!-- Comment -->
     <h2>Comment</h2>
@@ -88,6 +90,34 @@
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
       </uk-comment>
 
+      <uk-comment-list>
+        <uk-comment
+          comment-title="Author"
+          meta="12 days ago"
+          avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
+          modifiers="primary">
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+        </uk-comment>
+
+        <uk-comment
+          comment-title="Author"
+          meta="12 days ago"
+          avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
+          modifiers="primary">
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+        </uk-comment>
+
+        <uk-comment-list>
+          <uk-comment
+            comment-title="Author"
+            meta="12 days ago"
+            avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
+            modifiers="primary">
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+          </uk-comment>
+        </uk-comment-list>
+      </uk-comment-list>
+
       <uk-comment
         comment-title="Author"
         meta="12 days ago"
@@ -95,6 +125,8 @@
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
       </uk-comment>
     </uk-comment-list>
+
+    <!-- Common Components -->
 
     <!-- Button -->
     <h2>Button</h2>

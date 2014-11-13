@@ -1,15 +1,8 @@
 <article class="uk-comment">
-
-    <header class="uk-comment-header">
-
-        <img class="uk-comment-avatar" ng-src="{{avatar.src}}" alt="{{avatar.alt}}" ng-if="avatar">
-
-        <h4 class="uk-comment-title" ng-if="commentTitle">{{commentTitle}}</h4>
-
-        <div class="uk-comment-meta" ng-if="meta">{{meta}}</div>
-
-    </header>
-
-    <div class="uk-comment-body" ng-transclude></div>
-
+  <header class="uk-comment-header">
+    <img ng-if="avatar" ng-src="{{avatar.src}}" alt="{{avatar.alt}}" class="uk-comment-avatar" />
+    <h4 ng-if="commentTitle" ng-bind="commentTitle" class="uk-comment-title"></h4>
+    <div ng-if="meta" ng-bind="meta" class="uk-comment-meta"></div>
+  </header>
+  <div ng-transclude class="uk-comment-body"></div>
 </article>

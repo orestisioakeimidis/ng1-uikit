@@ -9,10 +9,10 @@ es = require "event-stream"
 prefix = "app"
 source = "src"
 paths =
-  index: "#{source}/index.html"
+  scripts: "#{source}/scripts/**/*.coffee"
   partials: "#{source}/partials/**/*.html"
   images: "#{source}/images/**/*"
-  scripts: "#{source}/scripts/**/*.coffee"
+  index: "#{source}/index.html"
 
 # Compile coffeescript files
 gulp.task "scripts", ->
@@ -44,9 +44,9 @@ gulp.task "index", ->
     .pipe $.inject(
       gulp.src bowerFiles(), read: no
     , {ignorePath: prefix, name: "bower"})
-    .pipe $.inject(es.merge(
+    .pipe $.inject(
       gulp.src ["#{prefix}/scripts/**/*.js"], read: no
-    ), ignorePath: prefix)
+    , ignorePath: prefix)
     .pipe gulp.dest prefix
     .pipe $.connect.reload()
 
