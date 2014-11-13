@@ -3,7 +3,7 @@
 # Global variables
 partials = "partials"
 
-# Apply modifier classes to elements
+# Apply modifier classes to element
 applyModifiers = (element, modifiers, directive) ->
   if modifiers
     element.addClass "uk-#{directive}-#{modifier}" for modifier in modifiers.split ","
@@ -155,8 +155,8 @@ ukClose = ->
   scope: {}
   templateUrl: "#{partials}/close.html"
   link: (scope, element, attributes) ->
-    scope.inalert = yes if "inalert" of attributes
-    scope.inmodal = yes if "inmodal" of attributes
+    scope.inalert = "inalert" of attributes
+    scope.inmodal = "inmodal" of attributes
     applyModifiers element, attributes.modifiers, "close"
 
 angular_uikit.directive "ukClose", ukClose
@@ -169,7 +169,7 @@ ukBadge = ->
   scope: {}
   templateUrl: "#{partials}/badge.html"
   link: (scope, element, attributes) ->
-    scope.inpanel = yes if "inpanel" of attributes
+    scope.inpanel = "inpanel" of attributes
     applyModifiers element, attributes.modifiers, "badge"
 
 angular_uikit.directive "ukBadge", ukBadge
@@ -183,7 +183,7 @@ ukAlert = ->
   templateUrl: "#{partials}/alert.html"
   link: (scope, element, attributes) ->
     if "close" of attributes
-      scope.close = if attributes.close == "" then yes else attributes.close
+      scope.close = if attributes.close is "" then yes else attributes.close
       element.attr "data-uk-alert", ""
     applyModifiers element, attributes.modifiers, "alert"
 
