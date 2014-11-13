@@ -1,5 +1,2 @@
 node_modules/
-bower_components/
 app/
-*.sublime-project
-*.sublime-workspace
