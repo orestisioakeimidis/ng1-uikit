@@ -92,7 +92,7 @@ ukCommentList = ->
       else
         # Remove comment list class because it is not needed in nested list
         elm.removeClass "uk-comment-list"
-      # If next element is  anested list append it in the current element
+      # If next element is a nested list append it in the current element
       if nested next
         elm.parent().append next
 
