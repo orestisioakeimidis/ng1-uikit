@@ -3,7 +3,6 @@ gulp = require "gulp"
 $ = do require "gulp-load-plugins"
 runSequence = require "run-sequence"
 bowerFiles = require "main-bower-files"
-es = require "event-stream"
 
 # Global variables
 prefix = "app"

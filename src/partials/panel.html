@@ -2,7 +2,7 @@
   <div ng-if="teaser" ng-bind-html="teaser" class="uk-panel-teaser"></div>
   <uk-badge ng-if="badge" ng-bind="badge.text" modifiers="{{badge.modifiers}}" inpanel></uk-badge>
   <h3 class="uk-panel-title" ng-if="panelTitle">
-    <uk-icon ng-if="icon" type="{{icon.type}}" modifiers="{{icon.modifiers}}"></uk-icon>
+    <uk-icon ng-if="icon" modifiers="{{icon.modifiers}}"></uk-icon>
     {{panelTitle}}
   </h3>
   <ng-transclude></ng-transclude>

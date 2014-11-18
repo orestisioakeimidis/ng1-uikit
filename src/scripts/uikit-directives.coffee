@@ -1,8 +1,5 @@
 "use strict"
 
-# Global variables
-partials = "partials"
-
 # Apply modifier classes to element
 applyModifiers = (element, modifiers, directive) ->
   if modifiers
@@ -26,7 +23,7 @@ ukPanel = ->
   scope:
     panelTitle: "@"
     teaser: "@"
-  templateUrl: "#{partials}/panel.html"
+  templateUrl: "partials/panel.html"
   link: (scope, element, attributes) ->
     scope.badge = angular.fromJson attributes.badge
     scope.icon = angular.fromJson attributes.icon
@@ -43,7 +40,7 @@ ukArticle = ->
     articleTitle: "@"
     meta: "@"
     lead: "@"
-  templateUrl: "#{partials}/article.html"
+  templateUrl: "partials/article/default.html"
   link: (scope, element, attributes) ->
     scope.readmore = angular.fromJson attributes.readmore
 
@@ -54,7 +51,7 @@ ukArticleDivider = ->
   restrict: "E"
   replace: yes
   scope: {}
-  templateUrl: "#{partials}/articleDivider.html"
+  templateUrl: "partials/article/divider.html"
 
 angular_uikit.directive "ukArticleDivider", ukArticleDivider
 
@@ -66,7 +63,7 @@ ukComment = ->
   scope:
     commentTitle: "@"
     meta: "@"
-  templateUrl: "#{partials}/comment.html"
+  templateUrl: "partials/comment/default.html"
   link: (scope, element, attributes) ->
     scope.avatar = angular.fromJson attributes.avatar
     applyModifiers element, attributes.modifiers, "comment"
@@ -79,7 +76,7 @@ ukCommentList = ->
   replace: yes
   transclude: yes
   scope: {}
-  templateUrl: "#{partials}/commentList.html"
+  templateUrl: "partials/comment/list.html"
   link: (scope, element, attributes) ->
     nested = (node) ->
       node.hasClass "uk-comment-list"
@@ -106,11 +103,11 @@ ukButton = ->
   restrict: "E"
   replace: yes
   scope: {}
-  templateUrl: "#{partials}/button.html"
+  templateUrl: "partials/button.html"
   link: (scope, element, attributes) ->
     mapper =
       "button": """<button type="button" />"""
-    href = if attributes.href then attributes.href else ""
+    href = attributes.href or ""
     tempElement = createElement mapper, attributes.type, """<a href="#{href}" />"""
     tempElement.addClass "uk-button"
     tempElement.text attributes.text if attributes.text
@@ -127,7 +124,7 @@ ukButtonGroup = ->
   replace: yes
   transclude: yes
   scope: {}
-  templateUrl: "#{partials}/buttonGroup.html"
+  templateUrl: "partials/buttonGroup.html"
 
 angular_uikit.directive "ukButtonGroup", ukButtonGroup
 
@@ -135,16 +132,13 @@ angular_uikit.directive "ukButtonGroup", ukButtonGroup
 ukIcon = ->
   restrict: "E"
   replace: yes
-  scope: {}
-  templateUrl: "#{partials}/icon.html"
+  scope:
+    href: "@"
+  templateUrl: (element, attributes) ->
+    template = if "button" in attributes.modifiers.split "," then "button" else "default"
+    "partials/icon/#{template}.html"
   link: (scope, element, attributes) ->
-    href = if attributes.href then attributes.href else ""
-    mapper =
-      "button": """<a href="#{href}" />"""
-    tempElement = createElement mapper, attributes.modifiers, "<i />"
-    tempElement.addClass "uk-icon-#{attributes.type}"
-    applyModifiers tempElement, attributes.modifiers, "icon"
-    element.replaceWith tempElement
+    applyModifiers element, attributes.modifiers, "icon"
 
 angular_uikit.directive "ukIcon", ukIcon
 
@@ -153,7 +147,7 @@ ukClose = ->
   restrict: "E"
   replace: yes
   scope: {}
-  templateUrl: "#{partials}/close.html"
+  templateUrl: "partials/close.html"
   link: (scope, element, attributes) ->
     scope.inalert = "inalert" of attributes
     scope.inmodal = "inmodal" of attributes
@@ -167,7 +161,7 @@ ukBadge = ->
   replace: yes
   transclude: yes
   scope: {}
-  templateUrl: "#{partials}/badge.html"
+  templateUrl: "partials/badge.html"
   link: (scope, element, attributes) ->
     scope.inpanel = "inpanel" of attributes
     applyModifiers element, attributes.modifiers, "badge"
@@ -180,7 +174,7 @@ ukAlert = ->
   replace: yes
   transclude: yes
   scope: {}
-  templateUrl: "#{partials}/alert.html"
+  templateUrl: "partials/alert.html"
   link: (scope, element, attributes) ->
     if "close" of attributes
       scope.close = if attributes.close is "" then yes else attributes.close
@@ -188,3 +182,26 @@ ukAlert = ->
     applyModifiers element, attributes.modifiers, "alert"
 
 angular_uikit.directive "ukAlert", ukAlert
+
+# Thumbnail
+ukThumbnail = ->
+  restrict: "E"
+  replace: yes
+  scope:
+    src: "@"
+    alt: "@"
+    href: "@"
+    caption: "@"
+  templateUrl: (element, attributes) ->
+    template = attributes.type or "default"
+    if template is "default" and "caption" of attributes
+      template = "caption"
+    "partials/thumbnail/#{template}.html"
+  link: (scope, element, attributes) ->
+    applyModifiers element, attributes.modifiers, "thumbnail"
+    element.removeAttr "src"
+    element.removeAttr "caption"
+    element.removeAttr "type"
+    element.removeAttr "modifiers"
+
+angular_uikit.directive "ukThumbnail", ukThumbnail

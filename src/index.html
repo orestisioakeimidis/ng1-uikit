@@ -30,7 +30,7 @@
           panel-title="Title"
           teaser='<img src="images/placeholder_800x280.svg" width="800" height="280" alt="">'
           modifiers="box,box-primary,header"
-          icon='{"type":"user"}'>
+          icon='{"modifiers":"user"}'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </uk-panel>
       </div>
@@ -40,7 +40,7 @@
           panel-title="Title"
           modifiers="box,box-secondary,header,space"
           badge='{"text":"100","modifiers":"notification,success"}'
-          icon='{"type":"home"}'>
+          icon='{"modifiers":"home"}'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </uk-panel>
 
@@ -48,7 +48,7 @@
           panel-title="Title"
           modifiers="box,divider"
           badge='{"text":"Hot","modifiers":"danger"}'
-          icon='{"type":"bookmark"}'>
+          icon='{"modifiers":"bookmark"}'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         </uk-panel>
       </div>
@@ -162,13 +162,13 @@
     <!-- Icon -->
     <h2>Icon</h2>
 
-    <uk-icon type="cog"></uk-icon>
+    <uk-icon modifiers="cog"></uk-icon>
 
-    <uk-icon type="user" modifiers="medium"></uk-icon>
+    <uk-icon modifiers="user,medium"></uk-icon>
 
-    <uk-icon type="refresh" modifiers="small,spin"></uk-icon>
+    <uk-icon modifiers="refresh,small,spin"></uk-icon>
 
-    <uk-icon type="github" href="https://github.com/orestisioakeimidis/angular-uikit" modifiers="button"></uk-icon>
+    <uk-icon href="https://github.com/orestisioakeimidis/angular-uikit" modifiers="github,button"></uk-icon>
 
     <!-- Close -->
     <h2>Close</h2>
@@ -204,6 +204,55 @@
       <h2>Title</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
     </uk-alert>
+
+    <!-- Thumbnail -->
+    <h2>Thumbnail</h2>
+
+    <div class="uk-grid uk-grid-width-1-3" data-uk-grid-margin>
+      <div>
+        <uk-thumbnail src="images/placeholder_800x280.svg"></uk-thumbnail>
+      </div>
+
+      <div>
+        <uk-thumbnail
+          src="images/placeholder_800x280.svg"
+          type="anchor"
+          href="#"
+          caption="This is a caption">
+        </uk-thumbnail>
+      </div>
+
+      <div>
+        <uk-thumbnail
+          src="images/placeholder_800x280.svg"
+          type="figure"
+          caption="This is a caption">
+        </uk-thumbnail>
+      </div>
+
+      <div>
+        <uk-thumbnail src="images/placeholder_800x280.svg" caption="This is a caption"></uk-thumbnail>
+      </div>
+
+      <div>
+        <uk-thumbnail
+          src="images/placeholder_800x280.svg"
+          type="anchor"
+          href="#"
+          caption="This is a caption"
+          modifiers="mini">
+        </uk-thumbnail>
+      </div>
+
+      <div>
+        <uk-thumbnail
+          src="images/placeholder_800x280.svg"
+          type="figure"
+          caption="This is a caption"
+          modifiers="small">
+        </uk-thumbnail>
+      </div>
+    </div>
   </div>
   <!-- bower:js -->
   <!-- endinject -->
