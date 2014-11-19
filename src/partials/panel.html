@@ -1,9 +1,9 @@
 <div class="uk-panel">
   <div ng-if="teaser" ng-bind-html="teaser" class="uk-panel-teaser"></div>
   <uk-badge ng-if="badge" ng-bind="badge.text" modifiers="{{badge.modifiers}}" inpanel></uk-badge>
-  <h3 class="uk-panel-title" ng-if="panelTitle">
+  <h3 ng-if="title" class="uk-panel-title">
     <uk-icon ng-if="icon" modifiers="{{icon.modifiers}}"></uk-icon>
-    {{panelTitle}}
+    {{title}}
   </h3>
   <ng-transclude></ng-transclude>
 </div>

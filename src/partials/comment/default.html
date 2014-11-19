@@ -1,7 +1,7 @@
 <article class="uk-comment">
   <header class="uk-comment-header">
     <img ng-if="avatar" ng-src="{{avatar.src}}" alt="{{avatar.alt}}" class="uk-comment-avatar" />
-    <h4 ng-if="commentTitle" ng-bind="commentTitle" class="uk-comment-title"></h4>
+    <h4 ng-if="title" ng-bind="title" class="uk-comment-title"></h4>
     <div ng-if="meta" ng-bind="meta" class="uk-comment-meta"></div>
   </header>
   <div ng-transclude class="uk-comment-body"></div>

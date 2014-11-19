@@ -27,7 +27,7 @@
     <div class="uk-grid uk-grid-width-1-2" data-uk-grid-margin>
       <div>
         <uk-panel
-          panel-title="Title"
+          title="Title"
           teaser='<img src="images/placeholder_800x280.svg" width="800" height="280" alt="">'
           modifiers="box,box-primary,header"
           icon='{"modifiers":"user"}'>
@@ -37,7 +37,7 @@
 
       <div>
         <uk-panel
-          panel-title="Title"
+          title="Title"
           modifiers="box,box-secondary,header,space"
           badge='{"text":"100","modifiers":"notification,success"}'
           icon='{"modifiers":"home"}'>
@@ -45,7 +45,7 @@
         </uk-panel>
 
         <uk-panel
-          panel-title="Title"
+          title="Title"
           modifiers="box,divider"
           badge='{"text":"Hot","modifiers":"danger"}'
           icon='{"modifiers":"bookmark"}'>
@@ -58,7 +58,7 @@
     <h2>Article</h2>
 
     <uk-article
-      article-title="Article title"
+      title="Article title"
       meta="Written by Super User on 12 April 2012. Posted in Blog"
       lead="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       readmore='{"href":"#","text":"Read more"}'>
@@ -71,7 +71,7 @@
     <h2>Comment</h2>
 
     <uk-comment
-      comment-title="Author"
+      title="Author"
       meta="12 days ago"
       avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
       modifiers="primary">
@@ -83,7 +83,7 @@
 
     <uk-comment-list>
       <uk-comment
-        comment-title="Author"
+        title="Author"
         meta="12 days ago"
         avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
         modifiers="primary">
@@ -92,7 +92,7 @@
 
       <uk-comment-list>
         <uk-comment
-          comment-title="Author"
+          title="Author"
           meta="12 days ago"
           avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
           modifiers="primary">
@@ -100,7 +100,7 @@
         </uk-comment>
 
         <uk-comment
-          comment-title="Author"
+          title="Author"
           meta="12 days ago"
           avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
           modifiers="primary">
@@ -109,7 +109,7 @@
 
         <uk-comment-list>
           <uk-comment
-            comment-title="Author"
+            title="Author"
             meta="12 days ago"
             avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'
             modifiers="primary">
@@ -119,7 +119,7 @@
       </uk-comment-list>
 
       <uk-comment
-        comment-title="Author"
+        title="Author"
         meta="12 days ago"
         avatar='{"src":"images/placeholder_avatar.svg","alt":"Avatar"}'>
         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
@@ -131,31 +131,31 @@
     <!-- Button -->
     <h2>Button</h2>
 
-    <uk-button text="Link" href="#"></uk-button>
+    <uk-button href="#">Link</uk-button>
 
-    <uk-button text="Button" type="button"></uk-button>
+    <uk-button>Button</uk-button>
 
-    <uk-button text="Disabled" type="button" disabled></uk-button>
+    <uk-button disabled>Disabled</uk-button>
 
-    <uk-button text="Success" type="button" modifiers="success,large"></uk-button>
+    <uk-button modifiers="success,large">Success</uk-button>
 
-    <uk-button text="Primary" type="button" modifiers="primary,mini"></uk-button>
+    <uk-button modifiers="primary,mini">Primary</uk-button>
 
-    <uk-button text="Link" modifiers="link" href="#"></uk-button>
+    <uk-button modifiers="link" href="#">Link</uk-button>
 
     <div class="uk-grid uk-grid-width-1-2 uk-margin-top">
       <div>
-        <uk-button text="Full width button" fullwidth></uk-button>
+        <uk-button fullwidth>Full width button</uk-button>
       </div>
     </div>
 
     <div class="uk-margin-top">
       <uk-button-group>
-        <uk-button text="Link" modifiers="primary"></uk-button>
+        <uk-button modifiers="primary">Link</uk-button>
 
-        <uk-button text="Button" type="button" modifiers="primary"></uk-button>
+        <uk-button modifiers="primary">Button</uk-button>
 
-        <uk-button text="Button" type="button" modifiers="primary"></uk-button>
+        <uk-button modifiers="primary">Button</uk-button>
       </uk-button-group>
     </div>
 
@@ -195,14 +195,14 @@
     <!-- Alert -->
     <h2>Alert</h2>
 
-    <uk-alert>
+    <uk-alert close>
       <h2>Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
     </uk-alert>
 
-    <uk-alert close modifiers="success,large">
+    <uk-alert close="alt" modifiers="success,large">
       <h2>Title</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
     </uk-alert>
 
     <!-- Thumbnail -->

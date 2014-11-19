@@ -5,9 +5,9 @@ applyModifiers = (element, modifiers, directive) ->
   if modifiers
     element.addClass "uk-#{directive}-#{modifier}" for modifier in modifiers.split ","
 
-# Create element based on an attribute else return fallback element
-createElement = (mapper, attribute, fallback) ->
-  angular.element if mapper[attribute] then mapper[attribute] else fallback
+# Remove selected attributes from element
+clearAttrs = (element, attributes) ->
+  element.removeAttr attribute for attribute in attributes
 
 # Initialize module
 angular_uikit = angular.module "angular-uikit", ["ngSanitize"]
@@ -21,13 +21,14 @@ ukPanel = ->
   replace: yes
   transclude: yes
   scope:
-    panelTitle: "@"
+    title: "@"
     teaser: "@"
   templateUrl: "partials/panel.html"
   link: (scope, element, attributes) ->
     scope.badge = angular.fromJson attributes.badge
     scope.icon = angular.fromJson attributes.icon
     applyModifiers element, attributes.modifiers, "panel"
+    clearAttrs element, ["badge", "icon", "modifiers", "teaser", "title"]
 
 angular_uikit.directive "ukPanel", ukPanel
 
@@ -37,12 +38,13 @@ ukArticle = ->
   replace: yes
   transclude: yes
   scope:
-    articleTitle: "@"
+    title: "@"
     meta: "@"
     lead: "@"
   templateUrl: "partials/article/default.html"
   link: (scope, element, attributes) ->
     scope.readmore = angular.fromJson attributes.readmore
+    clearAttrs element, ["lead", "meta", "readmore", "title"]
 
 angular_uikit.directive "ukArticle", ukArticle
 
@@ -61,12 +63,13 @@ ukComment = ->
   replace: yes
   transclude: yes
   scope:
-    commentTitle: "@"
+    title: "@"
     meta: "@"
   templateUrl: "partials/comment/default.html"
   link: (scope, element, attributes) ->
     scope.avatar = angular.fromJson attributes.avatar
     applyModifiers element, attributes.modifiers, "comment"
+    clearAttrs element, ["avatar", "meta", "modifiers", "title"]
 
 angular_uikit.directive "ukComment", ukComment
 
@@ -89,7 +92,7 @@ ukCommentList = ->
       else
         # Remove comment list class because it is not needed in nested list
         elm.removeClass "uk-comment-list"
-      # If next element is a nested list append it in the current element
+      # If next element is a nested list append it in the current's parent element
       if nested next
         elm.parent().append next
 
@@ -102,19 +105,17 @@ angular_uikit.directive "ukCommentList", ukCommentList
 ukButton = ->
   restrict: "E"
   replace: yes
-  scope: {}
-  templateUrl: "partials/button.html"
+  transclude: yes
+  scope:
+    href: "@"
+  templateUrl: (element, attributes) ->
+    template = if "href" of attributes then "anchor" else "default"
+    "partials/button/#{template}.html"
   link: (scope, element, attributes) ->
-    mapper =
-      "button": """<button type="button" />"""
-    href = attributes.href or ""
-    tempElement = createElement mapper, attributes.type, """<a href="#{href}" />"""
-    tempElement.addClass "uk-button"
-    tempElement.text attributes.text if attributes.text
-    tempElement.attr "disabled", "disabled" if "disabled" of attributes
-    tempElement.addClass "uk-width-1-1" if "fullwidth" of attributes
-    applyModifiers tempElement, attributes.modifiers, "button"
-    element.replaceWith tempElement
+    scope.disabled = "disabled" of attributes
+    scope.fullwidth = "fullwidth" of attributes
+    applyModifiers element, attributes.modifiers, "button"
+    clearAttrs element, ["fullwidth", "href", "modifiers"]
 
 angular_uikit.directive "ukButton", ukButton
 
@@ -124,7 +125,7 @@ ukButtonGroup = ->
   replace: yes
   transclude: yes
   scope: {}
-  templateUrl: "partials/buttonGroup.html"
+  templateUrl: "partials/button/group.html"
 
 angular_uikit.directive "ukButtonGroup", ukButtonGroup
 
@@ -139,6 +140,7 @@ ukIcon = ->
     "partials/icon/#{template}.html"
   link: (scope, element, attributes) ->
     applyModifiers element, attributes.modifiers, "icon"
+    clearAttrs element, ["href", "modifiers"]
 
 angular_uikit.directive "ukIcon", ukIcon
 
@@ -152,6 +154,7 @@ ukClose = ->
     scope.inalert = "inalert" of attributes
     scope.inmodal = "inmodal" of attributes
     applyModifiers element, attributes.modifiers, "close"
+    clearAttrs element, ["inalert", "inmodal", "modifiers"]
 
 angular_uikit.directive "ukClose", ukClose
 
@@ -165,6 +168,7 @@ ukBadge = ->
   link: (scope, element, attributes) ->
     scope.inpanel = "inpanel" of attributes
     applyModifiers element, attributes.modifiers, "badge"
+    clearAttrs element, ["modifiers"]
 
 angular_uikit.directive "ukBadge", ukBadge
 
@@ -180,6 +184,7 @@ ukAlert = ->
       scope.close = if attributes.close is "" then yes else attributes.close
       element.attr "data-uk-alert", ""
     applyModifiers element, attributes.modifiers, "alert"
+    clearAttrs element, ["close", "modifiers"]
 
 angular_uikit.directive "ukAlert", ukAlert
 
@@ -199,9 +204,6 @@ ukThumbnail = ->
     "partials/thumbnail/#{template}.html"
   link: (scope, element, attributes) ->
     applyModifiers element, attributes.modifiers, "thumbnail"
-    element.removeAttr "src"
-    element.removeAttr "caption"
-    element.removeAttr "type"
-    element.removeAttr "modifiers"
+    clearAttrs element, ["caption", "modifiers", "src", "type"]
 
 angular_uikit.directive "ukThumbnail", ukThumbnail
